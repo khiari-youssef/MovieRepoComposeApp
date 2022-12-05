@@ -1,23 +1,21 @@
 plugins {
-    id("com.android.application")
-    id ("org.jetbrains.kotlin.android")
+    id(Plugins.AndroidApplication)
+    id (Plugins.KotlinJB)
+    kotlin(Plugins.Kapt)
+    id(Plugins.DaggerHilt)
 }
 
 android {
     namespace = "com.mediaapps.movierepo"
-    compileSdk = 33
+    compileSdk = AppConfig.compileSDK
 
     defaultConfig {
-        applicationId = "com.mediaapps.movierepo"
-        minSdk = 26
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
-
+        applicationId = AppConfig.AppID
+        minSdk = AppConfig.minSDK
+        targetSdk = AppConfig.targetVersion
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildTypes {
@@ -45,6 +43,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.1"
     }
+    kapt {
+        correctErrorTypes = true
+    }
+
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -54,18 +56,7 @@ android {
 
 dependencies {
 
-    val compose_ui_version = "1.3.1"
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation ("androidx.activity:activity-compose:1.6.1")
-    implementation ("androidx.compose.ui:ui:$compose_ui_version")
-    implementation ("androidx.compose.ui:ui-tooling-preview:$compose_ui_version")
-    implementation ("androidx.compose.material:material:1.3.1")
-    testImplementation ("junit:junit:4.13.2")
-    androidTestImplementation ("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.0")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:$compose_ui_version")
-    debugImplementation ("androidx.compose.ui:ui-tooling:$compose_ui_version")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:$compose_ui_version")
+    installComposeDependencies()
+    installKotlinEssentialsDependencies()
+    installHiltDependencies()
 }
