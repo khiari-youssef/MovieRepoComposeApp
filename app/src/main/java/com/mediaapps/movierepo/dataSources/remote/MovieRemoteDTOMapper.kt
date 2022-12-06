@@ -17,7 +17,9 @@ class MovieItemRemoteDTOMapper @Inject constructor() : InterDomainMappingInterfa
         id = start.id ?: -1,
         title = start.title ?: "",
         poster = start.poster ?: "",
-        releaseDate = LocalDate.from(DateTimeFormatter.ISO_DATE.parse(start.releaseDate))
+        releaseDate = LocalDate.from(DateTimeFormatter.ISO_DATE.parse(start.releaseDate)),
+        language = start.language,
+        isForAdult = start.isForAdult
     )
 
     override fun fromDestinationToStart(destination: MovieItem): MovieItemDTO {
@@ -32,7 +34,9 @@ class MovieProductDetailsRemoteDTOMapper @Inject constructor() : InterDomainMapp
         title = start.title ?: "",
         poster = start.poster ?: "",
         releaseDate = LocalDate.from(DateTimeFormatter.ISO_DATE.parse(start.releaseDate)),
-        overView = start.overView ?: ""
+        overView = start.overView ?: "",
+        language = start.language,
+        isForAdult = start.isForAdult
     )
 
     override fun fromDestinationToStart(destination: MovieProductDetails): MovieProductDetailsDTO {

@@ -26,11 +26,12 @@ import com.mediaapps.movierepo.R
 @Preview
 @Composable
 fun AdultMark(
+    modifier: Modifier = Modifier,
     isVisible : Boolean = true
 ) {
     AnimatedVisibility(visible = isVisible) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .border(
                     border = BorderStroke(1.dp, Color.Red),
                     shape = CircleShape
@@ -58,11 +59,12 @@ fun AdultMark(
 @Preview
 @Composable
 fun MovieLangMark(
+    modifier: Modifier = Modifier,
     lang : String? = "en"
 ) {
     AnimatedVisibility(visible = lang != null) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .border(
                     border = BorderStroke(1.dp, MaterialTheme.colors.primary),
                     shape = RoundedCornerShape(8.dp)

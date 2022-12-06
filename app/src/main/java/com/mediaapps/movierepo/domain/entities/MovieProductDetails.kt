@@ -7,12 +7,16 @@ class MovieProductDetails(
      title : String,
      poster : String,
      releaseDate : LocalDate,
-    val  overView : String
+    val  overView : String,
+    language : String?=null,
+      isForAdult : Boolean = false
 ) : MovieItem(
     id,
     title,
     poster,
-    releaseDate
+    releaseDate,
+    language,
+    isForAdult
 ){
     override fun toString(): String {
         return "MovieProductDetails(overView='$overView',${super.toString()})"

@@ -49,7 +49,9 @@ import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieItem
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.ui.collectAsStateLifecycleAware
+import com.mediaapps.movierepo.ui.components.AdultMark
 import com.mediaapps.movierepo.ui.components.EmptyListState
+import com.mediaapps.movierepo.ui.components.MovieLangMark
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
@@ -253,22 +255,41 @@ fun MovieItem(
                                  )
                              )
                      ) {
-                         val releaseDate = createRef()
+                         val (adultMark,releaseDate,languageSticker) = createRefs()
+                         val lguidline = createGuidelineFromStart(0.2f)
+                         val rguidline = createGuidelineFromEnd(0.2f)
+//                         AdultMark(
+//                             isVisible = true,
+//                             modifier = Modifier.constrainAs(adultMark) {
+//                                 start.linkTo(parent.start,16.dp)
+//                                 top.linkTo(parent.top,8.dp)
+//                                 bottom.linkTo(parent.bottom,8.dp)
+//                                 end.linkTo(lguidline)
+//                             }
+//                         )
                          Text(
                              text = stringResource(id = R.string.movies_catalog_release_date_label,movieItem.releaseDate.year) ,
                              fontSize = 16.sp,
                              color = Color.White,
                              modifier = Modifier
                                  .constrainAs(releaseDate){
-                                     start.linkTo(parent.start,16.dp)
-                                     end.linkTo(parent.end,16.dp)
-                                     top.linkTo(parent.top,8.dp)
+                                     start.linkTo(lguidline,16.dp)
+                                     end.linkTo(rguidline,16.dp)
                                      bottom.linkTo(parent.bottom,8.dp)
                                      width = Dimension.fillToConstraints
                                  },
                              fontFamily = FontFamily(Font(R.font.satoshi_bold)),
                              textAlign = TextAlign.Center
                          )
+//                         MovieLangMark(
+//                             lang = movieItem.language,
+//                             modifier = Modifier.constrainAs(languageSticker) {
+//                                 end.linkTo(parent.end,16.dp)
+//                                 top.linkTo(parent.top,8.dp)
+//                                 bottom.linkTo(parent.bottom,8.dp)
+//                                 start.linkTo(rguidline)
+//                             }
+//                         )
                      }
                  }
 
