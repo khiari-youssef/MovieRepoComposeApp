@@ -1,11 +1,15 @@
 package com.mediaapps.movierepo.di
 
 import com.mediaapps.movierepo.BuildConfig
+import com.mediaapps.movierepo.domain.exceptions.MovieDomainException
+import com.mediaapps.movierepo.domain.exceptions.MovieInvalidAPIKeyException
+import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.*
+import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -49,6 +53,15 @@ fun provideAppHttpClient() : HttpClient = HttpClient(CIO){
       headers.append(
         HttpHeaders.ContentType, "application/json"
       )
+    }
+  }
+  HttpResponseValidator {
+    validateResponse {
+      when (it.status.value){
+         404 -> throw MovieResourceNotFoundException()
+        401 -> throw MovieInvalidAPIKeyException()
+        else -> throw MovieDomainException()
+      }
     }
   }
   engine {
