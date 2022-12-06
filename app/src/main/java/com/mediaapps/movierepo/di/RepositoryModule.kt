@@ -17,6 +17,7 @@ annotation class MovieRepositoryDevImpl
 @Module
 abstract class RepositoryModule {
 
+@MovieRepositoryDevImpl
 @Binds
 abstract fun bindMoviesRepositoryInstance(moviesRepository: MoviesRepository) : MoviesRepositoryContract
 
