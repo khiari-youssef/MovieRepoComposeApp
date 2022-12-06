@@ -104,6 +104,10 @@ fun DependencyHandlerScope.installComposeDependencies() {
             "debugImplementation",
             LottieCompose
         )
+        dependencies.add(
+            "debugImplementation",
+            ConstraintLayout
+        )
     }
 
 }

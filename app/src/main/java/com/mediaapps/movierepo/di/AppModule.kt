@@ -57,11 +57,12 @@ fun provideAppHttpClient() : HttpClient = HttpClient(CIO){
   }
   HttpResponseValidator {
     validateResponse {
-      if (it.status.isSuccess().not())
-      when (it.status.value){
-         404 -> throw MovieResourceNotFoundException()
-        401 -> throw MovieInvalidAPIKeyException()
-        else -> throw MovieDomainException()
+      if (it.status.isSuccess().not()) {
+        when (it.status.value){
+          404 -> throw MovieResourceNotFoundException()
+          401 -> throw MovieInvalidAPIKeyException()
+          else -> throw MovieDomainException()
+        }
       }
     }
   }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MovieRepo</string>
+
+    <string name="movies_catalog_list_empty">Movies unavailable !</string>
 </resources>

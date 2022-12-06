@@ -19,6 +19,7 @@ object Versions {
         const val ViewModel : String = "2.5.1"
         const val CoilCompose : String = "2.2.2"
         const val Lottie : String = "5.2.0"
+        const val ConstraintLayout : String = "1.0.1"
         const val ComposeUITestJunit4 : String = "1.3.1"
         const val ComposeTestManifest : String = "1.3.1"
     }
