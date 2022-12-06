@@ -1,10 +1,11 @@
 package com.mediaapps.movierepo.dataSources.remote.networkDTO
 
-import java.time.LocalDate
+import kotlinx.serialization.SerialName
 
+@kotlinx.serialization.Serializable
 data class MovieItemDTO(
-    val id : Int,
-    val title : String,
-    val poster : String,
-    val releaseDate : LocalDate
+@SerialName("id")    val id : Int,
+@SerialName("title")    val title : String,
+@SerialName("poster_path")     val poster : String,
+@SerialName("release_date")     val releaseDate : String
 )

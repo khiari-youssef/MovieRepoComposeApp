@@ -3,5 +3,6 @@ object Plugins {
     const val AndroidLibrary : String = "com.android.library"
     const val KotlinJB : String ="org.jetbrains.kotlin.android"
     const val Kapt : String = "kapt"
+    const val KTXSerialization : String = "plugin.serialization"
     const val DaggerHilt : String = "com.google.dagger.hilt.android"
 }

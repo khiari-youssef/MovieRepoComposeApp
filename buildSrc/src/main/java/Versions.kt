@@ -17,6 +17,7 @@ object Versions {
         const val Material : String = "1.3.1"
         const val NavComponent : String = "2.5.3"
         const val ViewModel : String = "2.5.1"
+        const val CoilCompose : String = "2.2.2"
 
         const val ComposeUITestJunit4 : String = "1.3.1"
         const val ComposeTestManifest : String = "1.3.1"
@@ -25,5 +26,8 @@ object Versions {
     object Ktor{
         const val Core : String = "2.1.3"
         const val CIO : String = "2.1.3"
+        const val Logger : String = "2.1.3"
+        const val ContentNegotiation : String = "2.1.3"
+        const val KTXJson : String = "2.1.3"
     }
 }

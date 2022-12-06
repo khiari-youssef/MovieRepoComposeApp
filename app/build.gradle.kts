@@ -6,6 +6,7 @@ plugins {
     id (Plugins.KotlinJB)
     kotlin(Plugins.Kapt)
     id(Plugins.DaggerHilt)
+    kotlin(Plugins.KTXSerialization) version "1.7.20"
 }
 
 android {

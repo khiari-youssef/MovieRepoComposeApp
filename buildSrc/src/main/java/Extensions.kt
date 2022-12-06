@@ -4,9 +4,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 
 
-fun DependencyHandlerScope.installKotlinEssentialsDependencies(
-    extras : Map<String,String>?=null
-) {
+fun DependencyHandlerScope.installKotlinEssentialsDependencies() {
     Dependencies.Kotlin.run {
         dependencies.add(
             "implementation",
@@ -40,9 +38,7 @@ fun DependencyHandlerScope.installKotlinEssentialsDependencies(
 }
 
 
-fun DependencyHandlerScope.installHiltDependencies(
-    extras : Map<String,String>?=null
-) {
+fun DependencyHandlerScope.installHiltDependencies() {
     Dependencies.Hilt.run {
         dependencies.add(
             "implementation",
@@ -58,9 +54,7 @@ fun DependencyHandlerScope.installHiltDependencies(
 }
 
 
-fun DependencyHandlerScope.installComposeDependencies(
-    extras : Map<String,String>?=null
-) {
+fun DependencyHandlerScope.installComposeDependencies() {
     Dependencies.Compose.run {
         dependencies.add(
             "implementation",
@@ -102,13 +96,15 @@ fun DependencyHandlerScope.installComposeDependencies(
             "debugImplementation",
             ComposeTestManifest
         )
+        dependencies.add(
+            "debugImplementation",
+            CoilCompose
+        )
     }
 
 }
 
-fun DependencyHandlerScope.installKtorDependencies(
-    extras : Map<String,String>?=null
-) {
+fun DependencyHandlerScope.installKtorDependencies() {
     Dependencies.Ktor.run {
         dependencies.add(
             "implementation",
@@ -117,6 +113,18 @@ fun DependencyHandlerScope.installKtorDependencies(
         dependencies.add(
             "implementation",
             CIO
+        )
+        dependencies.add(
+            "implementation",
+            Logger
+        )
+        dependencies.add(
+            "implementation",
+            ContentNegotiation
+        )
+        dependencies.add(
+            "implementation",
+            KTXJson
         )
     }
 }

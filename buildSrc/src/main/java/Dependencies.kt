@@ -22,6 +22,7 @@ object Dependencies {
         const val Material : String = "androidx.compose.material:material:${Versions.Compose.Material}"
         const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.ViewModel}"
         const val HiltNavigation : String = "androidx.hilt:hilt-navigation-compose:1.0.0"
+        const val CoilCompose : String = "io.coil-kt:coil-compose:${Versions.Compose.CoilCompose}"
         const val NavComponent : String = "androidx.navigation:navigation-compose:${Versions.Compose.NavComponent}"
         const val ComposeUITestJunit4 : String = "androidx.compose.ui:ui-test-junit4:${Versions.Compose.ComposeUITestJunit4}"
         const val ComposeTestManifest : String ="androidx.compose.ui:ui-test-manifest:${Versions.Compose.ComposeTestManifest}"
@@ -35,6 +36,9 @@ object Dependencies {
     object Ktor{
       const val Core : String = "io.ktor:ktor-client-core:${Versions.Ktor.Core}"
       const val CIO : String = "io.ktor:ktor-client-cio:${Versions.Ktor.CIO}"
+      const val Logger : String = "io.ktor:ktor-client-logging:${Versions.Ktor.Logger}"
+      const val ContentNegotiation : String = "io.ktor:ktor-client-content-negotiation:${Versions.Ktor.ContentNegotiation}"
+      const val KTXJson : String =  "io.ktor:ktor-serialization-kotlinx-json:${Versions.Ktor.KTXJson}"
     }
 
 
