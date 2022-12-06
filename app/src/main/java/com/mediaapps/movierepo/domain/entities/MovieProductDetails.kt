@@ -13,4 +13,8 @@ class MovieProductDetails(
     title,
     poster,
     releaseDate
-)
+){
+    override fun toString(): String {
+        return "MovieProductDetails(overView='$overView',${super.toString()})"
+    }
+}

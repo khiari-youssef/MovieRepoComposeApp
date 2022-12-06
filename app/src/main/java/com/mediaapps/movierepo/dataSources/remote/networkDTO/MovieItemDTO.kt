@@ -4,8 +4,8 @@ import kotlinx.serialization.SerialName
 
 @kotlinx.serialization.Serializable
 data class MovieItemDTO(
-@SerialName("id")    val id : Int,
-@SerialName("title")    val title : String,
-@SerialName("poster_path")     val poster : String,
-@SerialName("release_date")     val releaseDate : String
+@SerialName("id")    val id : Int?=null,
+@SerialName("title")    val title : String?=null,
+@SerialName("poster_path")     val poster : String?=null,
+@SerialName("release_date")     val releaseDate : String?=null
 )

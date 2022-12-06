@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 
 @kotlinx.serialization.Serializable
 data class MovieCatalogDTO(
- @SerialName("page")   val page : Int,
- @SerialName("total_pages")   val totalPages : Int,
- @SerialName("results")   val movies : List<MovieItemDTO>
+ @SerialName("page")   val page : Int?=null,
+ @SerialName("total_pages")   val totalPages : Int?=null,
+ @SerialName("results")   val movies : List<MovieItemDTO>?=null
 )

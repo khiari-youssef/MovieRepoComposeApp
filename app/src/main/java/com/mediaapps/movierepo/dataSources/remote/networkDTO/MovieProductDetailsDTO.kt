@@ -6,9 +6,9 @@ import java.time.LocalDate
 
 @kotlinx.serialization.Serializable
 data class MovieProductDetailsDTO(
-    @SerialName("id")  val id : Int,
-    @SerialName("title")  val title : String,
-    @SerialName("poster_path")     val poster : String,
-    @SerialName("release_date")     val releaseDate : String,
-    @SerialName("overview") val  overView : String
+    @SerialName("id")  val id : Int?=null,
+    @SerialName("title")  val title : String?=null,
+    @SerialName("poster_path")     val poster : String?=null,
+    @SerialName("release_date")     val releaseDate : String?=null,
+    @SerialName("overview") val  overView : String?=null
 )

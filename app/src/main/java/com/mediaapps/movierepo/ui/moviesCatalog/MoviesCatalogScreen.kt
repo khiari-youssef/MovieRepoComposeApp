@@ -8,4 +8,5 @@ import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
 fun  MoviesCatalogScreen(
     moviesCatalogViewModel: MoviesCatalogViewModel = hiltViewModel()
 ) {
+
 }
