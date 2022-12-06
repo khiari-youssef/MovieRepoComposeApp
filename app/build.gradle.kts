@@ -24,7 +24,12 @@ android {
 
     buildTypes {
         val prop = Properties().apply {
-            load(FileInputStream(File(rootProject.rootDir, "env.properties")))
+            try {
+                load(FileInputStream(File(rootProject.rootDir, "env.properties")))
+            } catch (th : Throwable) {
+                th.printStackTrace()
+                this.setProperty("API_KEY","\"\"")
+            }
         }
         getByName("release") {
             isMinifyEnabled = true
