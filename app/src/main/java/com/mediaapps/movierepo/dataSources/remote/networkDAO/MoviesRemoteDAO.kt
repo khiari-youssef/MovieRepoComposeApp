@@ -1,4 +1,4 @@
-package com.mediaapps.movierepo.dataSources.remote
+package com.mediaapps.movierepo.dataSources.remote.networkDAO
 
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieRepo</string>
+    <string name="app_name">TheMovieDB</string>
 
     <string name="movies_catalog_list_empty">Movies unavailable !</string>
     <string name="movies_catalog_release_date_label">Released in %d</string>

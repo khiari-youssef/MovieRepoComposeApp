@@ -1,7 +1,7 @@
 package com.mediaapps.movierepo.di
 
-import com.mediaapps.movierepo.dataSources.remote.MoviesRESTDataSourceImpl
-import com.mediaapps.movierepo.dataSources.remote.MoviesRemoteDAO
+import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRESTDataSourceImpl
+import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRemoteDAO
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

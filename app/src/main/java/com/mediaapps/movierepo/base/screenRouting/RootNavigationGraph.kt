@@ -1,9 +1,14 @@
 package com.mediaapps.movierepo.base
 
+import android.os.Bundle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.navigation.Navigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navOptions
+import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.base.screenRouting.MovieProductPageScreenRoute
 import com.mediaapps.movierepo.base.screenRouting.MoviesCatalogScreenRoute
 import com.mediaapps.movierepo.ui.movieProductPage.MovieProductPageScreen
@@ -20,7 +25,15 @@ fun  RootNavigationGraph() {
         composable(
             route = MoviesCatalogScreenRoute
         ){
-            MoviesCatalogScreen()
+            MoviesCatalogScreen(
+                onMovieClicked = remember {
+                    {
+                        rootNavController.navigate(
+                            MovieProductPageScreenRoute
+                        )
+                    }
+                }
+            )
         }
         composable(
             route  =MovieProductPageScreenRoute

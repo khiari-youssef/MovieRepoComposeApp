@@ -1,6 +1,5 @@
-package com.mediaapps.movierepo.dataSources.remote
+package com.mediaapps.movierepo.dataSources.remote.networkDAO
 
-import com.mediaapps.movierepo.BuildConfig
 import com.mediaapps.movierepo.dataSources.InterDomainMappingInterface
 import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieCatalogDTO
 import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieProductDetailsDTO

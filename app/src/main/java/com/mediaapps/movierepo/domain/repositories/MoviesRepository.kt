@@ -1,6 +1,6 @@
 package com.mediaapps.movierepo.domain.repositories
 
-import com.mediaapps.movierepo.dataSources.remote.MoviesRemoteDAO
+import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRemoteDAO
 import com.mediaapps.movierepo.di.MovieDAORESTImpl
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails

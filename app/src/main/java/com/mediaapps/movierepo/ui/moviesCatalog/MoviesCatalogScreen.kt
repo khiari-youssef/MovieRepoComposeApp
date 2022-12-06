@@ -60,7 +60,8 @@ fun  MoviesCatalogScreen(
     viewModel: MoviesCatalogViewModel = hiltViewModel(),
     uiStateHolder : MoviesCatalogUIStateHolder = MoviesCatalogUIStateHolder.rememberMoviesCatalogUIState(
         viewModel = viewModel
-    )
+    ),
+    onMovieClicked: (movie: MovieItem) -> Unit
 ) {
 
    Column(
@@ -89,17 +90,14 @@ fun  MoviesCatalogScreen(
                    when (currentState){
                        is MovieCatalogDataState.Success.Empty ->{
                            EmptyListState(
-                               messageRes = com.mediaapps.movierepo.R.string.movies_catalog_list_empty
+                               messageRes = R.string.movies_catalog_list_empty
                            )
                        }
                        is MovieCatalogDataState.Success.HasResult->{
                            MoviesListColumn(
                                movieCatalog = currentState.movieCatalog ,
-                               onMovieClicked =  remember {
-                                   {
-
-                                   }
-                               })
+                               onMovieClicked = onMovieClicked
+                           )
                        }
                    }
                }
