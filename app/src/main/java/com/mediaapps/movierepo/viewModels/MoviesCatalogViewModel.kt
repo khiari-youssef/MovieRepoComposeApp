@@ -40,7 +40,7 @@ class MoviesCatalogViewModel @Inject constructor(
                 moviesCatalogMutableState.value = if (catalog.movies.isEmpty()){
                     MovieCatalogDataState.Success.Empty
                 } else {
-                    MovieCatalogDataState.Success.HasResult(catalog)
+                    MovieCatalogDataState.Success.Empty
                 }
             }
         }

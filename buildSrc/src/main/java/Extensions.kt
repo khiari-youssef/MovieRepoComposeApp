@@ -100,6 +100,10 @@ fun DependencyHandlerScope.installComposeDependencies() {
             "debugImplementation",
             CoilCompose
         )
+        dependencies.add(
+            "debugImplementation",
+            LottieCompose
+        )
     }
 
 }

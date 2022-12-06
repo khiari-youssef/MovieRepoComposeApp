@@ -23,6 +23,7 @@ object Dependencies {
         const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.ViewModel}"
         const val HiltNavigation : String = "androidx.hilt:hilt-navigation-compose:1.0.0"
         const val CoilCompose : String = "io.coil-kt:coil-compose:${Versions.Compose.CoilCompose}"
+        const val LottieCompose : String = "com.airbnb.android:lottie-compose:${Versions.Compose.Lottie}"
         const val NavComponent : String = "androidx.navigation:navigation-compose:${Versions.Compose.NavComponent}"
         const val ComposeUITestJunit4 : String = "androidx.compose.ui:ui-test-junit4:${Versions.Compose.ComposeUITestJunit4}"
         const val ComposeTestManifest : String ="androidx.compose.ui:ui-test-manifest:${Versions.Compose.ComposeTestManifest}"

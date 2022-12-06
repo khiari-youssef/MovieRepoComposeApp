@@ -18,7 +18,7 @@ object Versions {
         const val NavComponent : String = "2.5.3"
         const val ViewModel : String = "2.5.1"
         const val CoilCompose : String = "2.2.2"
-
+        const val Lottie : String = "5.2.0"
         const val ComposeUITestJunit4 : String = "1.3.1"
         const val ComposeTestManifest : String = "1.3.1"
     }
