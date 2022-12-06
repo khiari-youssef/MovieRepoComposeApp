@@ -106,5 +106,20 @@ fun DependencyHandlerScope.installComposeDependencies(
 
 }
 
+fun DependencyHandlerScope.installKtorDependencies(
+    extras : Map<String,String>?=null
+) {
+    Dependencies.Ktor.run {
+        dependencies.add(
+            "implementation",
+            Core
+        )
+        dependencies.add(
+            "implementation",
+            CIO
+        )
+    }
+}
+
 
 

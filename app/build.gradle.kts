@@ -59,4 +59,5 @@ dependencies {
     installComposeDependencies()
     installKotlinEssentialsDependencies()
     installHiltDependencies()
+    installKtorDependencies()
 }

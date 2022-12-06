@@ -32,5 +32,10 @@ object Dependencies {
         const val Kapt = "com.google.dagger:hilt-android-compiler:2.44"
     }
 
+    object Ktor{
+      const val Core : String = "io.ktor:ktor-client-core:${Versions.Ktor.Core}"
+      const val CIO : String = "io.ktor:ktor-client-cio:${Versions.Ktor.CIO}"
+    }
+
 
 }

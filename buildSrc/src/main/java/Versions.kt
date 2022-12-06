@@ -21,4 +21,9 @@ object Versions {
         const val ComposeUITestJunit4 : String = "1.3.1"
         const val ComposeTestManifest : String = "1.3.1"
     }
+
+    object Ktor{
+        const val Core : String = "2.1.3"
+        const val CIO : String = "2.1.3"
+    }
 }
