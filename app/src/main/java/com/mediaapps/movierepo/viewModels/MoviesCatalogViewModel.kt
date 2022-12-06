@@ -33,6 +33,7 @@ class MoviesCatalogViewModel @Inject constructor(
         viewModelScope.launch {
             moviesRepository.fetchMoviesCatalog()
                 .reduceException{ domainException->
+                    domainException.printStackTrace()
                     moviesCatalogMutableState.value = MovieCatalogDataState.Error(domainException)
                 }
                 .collectLatest { catalog->

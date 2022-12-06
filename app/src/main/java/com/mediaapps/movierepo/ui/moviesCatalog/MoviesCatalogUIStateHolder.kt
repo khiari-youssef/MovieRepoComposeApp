@@ -1,11 +1,11 @@
 package com.mediaapps.movierepo.ui.moviesCatalog
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
+import com.mediaapps.movierepo.ui.collectAsStateLifecycleAware
+import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
+import kotlinx.coroutines.flow.map
 
 @Stable
 @JvmInline
@@ -20,11 +20,18 @@ data class MoviesCatalogUIStateHolder(
 
         @Composable
         fun rememberMoviesCatalogUIState(
-             moviesCatalog : State<MoviesCatalogStateImmutablePayload>
-        ) = remember(moviesCatalog) {
-            MoviesCatalogUIStateHolder(
-                moviesCatalog
-            )
-        }
+             viewModel : MoviesCatalogViewModel
+        ) = viewModel
+            .moviesCatalogImmutableState
+            .collectAsStateLifecycleAware(initial = MovieCatalogDataState.Loading )
+            .value.let {
+                MoviesCatalogUIStateHolder(
+                    moviesCatalog = derivedStateOf {
+                        MoviesCatalogStateImmutablePayload(it)
+                    }
+                )
+            }
+
+
     }
 }
