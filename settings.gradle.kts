@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MovieRepo"
 include(":app")
-include(":design-system")
