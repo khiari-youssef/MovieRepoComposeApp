@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.*
+
 plugins {
     id(Plugins.AndroidApplication)
     id (Plugins.KotlinJB)
@@ -19,14 +22,21 @@ android {
     }
 
     buildTypes {
+        val prop = Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "env.properties")))
+        }
         getByName("release") {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type.
             isMinifyEnabled = true
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
             isShrinkResources = true
             isDebuggable=false
+            buildConfigField("String","API_KEY",prop.getProperty("API_KEY"))
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        getByName("debug"){
+            isMinifyEnabled = false
+            isShrinkResources = false
+            isDebuggable=true
+            buildConfigField("String","API_KEY", prop.getProperty("API_KEY"))
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -61,3 +71,5 @@ dependencies {
     installHiltDependencies()
     installKtorDependencies()
 }
+
+

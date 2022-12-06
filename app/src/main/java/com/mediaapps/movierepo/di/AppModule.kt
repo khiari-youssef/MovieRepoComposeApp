@@ -9,6 +9,7 @@ import io.ktor.client.engine.cio.*
 import javax.inject.Singleton
 
 
+
 @InstallIn(SingletonComponent::class)
 @Module
 class AppModule {
