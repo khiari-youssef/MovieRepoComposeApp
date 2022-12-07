@@ -5,7 +5,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 
 fun DependencyHandlerScope.installKotlinEssentialsDependencies() {
-    Dependencies.Kotlin.run {
+    Dependencies.AndroidKotlin.run {
         dependencies.add(
             "implementation",
             Core
@@ -13,6 +13,10 @@ fun DependencyHandlerScope.installKotlinEssentialsDependencies() {
         dependencies.add(
             "implementation",
             ViewModel
+        )
+        dependencies.add(
+            "implementation",
+            DataStore
         )
         dependencies.add(
             "implementation",

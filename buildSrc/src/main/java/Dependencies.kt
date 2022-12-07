@@ -4,14 +4,15 @@
 object Dependencies {
 
 
-    object Kotlin{
-        const val Core : String = "androidx.core:core-ktx:${Versions.Kotlin.Core}"
-        const val Coroutines : String = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.Coroutines}"
-        const val LifeCycleRuntime : String = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Kotlin.LifeCycleRuntime}"
-        const val Junit4 : String = "junit:junit:${Versions.Kotlin.Junit4}"
-        const val TextExt : String = "androidx.test.ext:junit:${Versions.Kotlin.TextExt}"
-        const val EspressoTest : String = "androidx.test.espresso:espresso-core:${Versions.Kotlin.EspressoTest}"
-        const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Kotlin.LifeCycleRuntime}"
+    object AndroidKotlin{
+        const val Core : String = "androidx.core:core-ktx:${Versions.AndroidKotlin.Core}"
+        const val Coroutines : String = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.AndroidKotlin.Coroutines}"
+        const val LifeCycleRuntime : String = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidKotlin.LifeCycleRuntime}"
+        const val Junit4 : String = "junit:junit:${Versions.AndroidKotlin.Junit4}"
+        const val TextExt : String = "androidx.test.ext:junit:${Versions.AndroidKotlin.TextExt}"
+        const val EspressoTest : String = "androidx.test.espresso:espresso-core:${Versions.AndroidKotlin.EspressoTest}"
+        const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidKotlin.LifeCycleRuntime}"
+        const val DataStore : String =  "androidx.datastore:datastore-preferences:${Versions.AndroidKotlin.DataStore}"
     }
 
     object Compose {
