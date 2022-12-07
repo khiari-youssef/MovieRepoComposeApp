@@ -34,10 +34,7 @@ import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieItem
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
-import com.mediaapps.movierepo.ui.components.AdultMark
-import com.mediaapps.movierepo.ui.components.EmptyListState
-import com.mediaapps.movierepo.ui.components.ErrorScreenBox
-import com.mediaapps.movierepo.ui.components.MovieLangMark
+import com.mediaapps.movierepo.ui.components.*
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
 
 @Composable
@@ -201,61 +198,13 @@ fun MovieItem(
                      modifier = Modifier
                          .align(Alignment.BottomCenter)
                  ) {
-                     ConstraintLayout(
-                         modifier = Modifier
-                             .fillMaxHeight(0.3f)
-                             .fillMaxWidth()
-                             .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp))
-                             .background(
-                                 brush = Brush.verticalGradient(
-                                     listOf(
-                                         Color.Transparent,
-                                         Color(0x66000000),
-                                         Color(0x99000000),
-                                         Color(0x99000000),
-                                         Color(0x99000000),
-                                         Color(0x99000000)
-                                     )
-                                 )
-                             )
-                     ) {
-                         val (adultMark,releaseDate,languageSticker) = createRefs()
-                         val lguidline = createGuidelineFromStart(0.2f)
-                         val rguidline = createGuidelineFromEnd(0.2f)
-                         AdultMark(
-                             isVisible = true,
-                             modifier = Modifier.constrainAs(adultMark) {
-                                 start.linkTo(parent.start,8.dp)
-                                 top.linkTo(releaseDate.top)
-                                 bottom.linkTo(releaseDate.bottom)
-                                 end.linkTo(lguidline)
-                             }
-                         )
-                         Text(
-                             text = stringResource(id = R.string.movies_catalog_release_date_label,movieItem.releaseDate.year) ,
-                             fontSize = 16.sp,
-                             color = Color.White,
-                             modifier = Modifier
-                                 .constrainAs(releaseDate){
-                                     start.linkTo(lguidline,16.dp)
-                                     end.linkTo(rguidline,16.dp)
-                                     bottom.linkTo(parent.bottom,8.dp)
-                                     width = Dimension.fillToConstraints
-                                 },
-                             fontFamily = FontFamily(Font(R.font.satoshi_bold)),
-                             textAlign = TextAlign.Center
-                         )
-                         MovieLangMark(
-                            lang = movieItem.language,
-                             modifier = Modifier.constrainAs(languageSticker) {
-                                 end.linkTo(parent.end,8.dp)
-                                 top.linkTo(releaseDate.top)
-                                 bottom.linkTo(releaseDate.bottom)
-                                 start.linkTo(rguidline)
-                             }
-                         )
-                     }
+                     MovieGradientFilterRow(
+                         isForAdults = movieItem.isForAdult,
+                         releaseYear = movieItem.releaseDate.year,
+                         lang = movieItem.language
+                     )
                  }
+
 
              }
          }

@@ -45,7 +45,7 @@ fun MovieProductPageScreen(
     ),
     movieID : Int = -1
 ) {
-    val screenScrollState = rememberScrollState()
+
 
     viewModel.fetchMovieProductDetail(
         movieID
@@ -65,30 +65,39 @@ fun MovieProductPageScreen(
             ErrorScreenBox()
         }
         is MovieProductDetailsDataState.Success ->{
-            Column(
-                modifier = Modifier
-                    .verticalScroll(state = screenScrollState)
-                    .systemBarsPadding()
-                    .background(Color.White)
-                    .fillMaxSize()
-            ){
-                MoviePoster(
-                    posterPath = currentState.movieProductDetails.poster,
-                    isForAdult = currentState.movieProductDetails.isForAdult
-                )
-                MovieProductDetailsCard(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .offset(
-                            y = (-20).dp
-                        ),
-                    movieProductDetails =  currentState.movieProductDetails
-                )
-            }
+            ProductDetailsContent(currentState.movieProductDetails)
         }
     }
+}
 
-
+@Preview
+@Composable
+fun ProductDetailsContent(
+    movieProductDetails : MovieProductDetails = MovieProductDetails(
+        0,"Jaws","", LocalDate.now(),"lurepsum".repeat(120),""
+    )
+) {
+    val screenScrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .verticalScroll(state = screenScrollState)
+            .systemBarsPadding()
+            .background(Color.White)
+            .fillMaxSize()
+    ){
+        MoviePoster(
+            posterPath = movieProductDetails.poster,
+            isForAdult = movieProductDetails.isForAdult
+        )
+        MovieProductDetailsCard(
+            modifier = Modifier
+                .fillMaxSize()
+                .offset(
+                    y = (-20).dp
+                ),
+            movieProductDetails = movieProductDetails
+        )
+    }
 }
 
 
@@ -146,6 +155,8 @@ fun MovieProductDetailsCard(
         ),
         backgroundColor = Color.White,
         modifier = modifier
+            .fillMaxSize(),
+        elevation = 0.dp
     ) {
       Column(
           horizontalAlignment = Alignment.Start,
@@ -163,6 +174,9 @@ fun MovieProductDetailsCard(
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.spacedBy(8.dp)
           ) {
+              AdultMark(
+                  isVisible = movieProductDetails.isForAdult
+              )
               Text(
                   text = movieProductDetails.title,
                   color = MaterialTheme.colors.primary,
@@ -191,7 +205,7 @@ fun MovieProductDetailsCard(
                   .padding(
                       top = 22.dp
                   )
-                  .fillMaxWidth()
+                  .fillMaxSize()
           ) {
               Text(
                   text = movieProductDetails.overView,
