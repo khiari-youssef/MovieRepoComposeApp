@@ -39,7 +39,10 @@ import java.time.LocalDate
 @Preview
 @Composable
 fun MovieProductPageScreen(
-   // movieProductPageViewModel: ProductPageViewModel = hiltViewModel()
+    viewModel: ProductPageViewModel = hiltViewModel(),
+    uiStateHolder: MovieProductDetailsUIStateHolder = MovieProductDetailsUIStateHolder.rememberMovieProductDetailsUIState(
+        viewModel = viewModel
+    )
 ) {
 
     val screenScrollState = rememberScrollState()

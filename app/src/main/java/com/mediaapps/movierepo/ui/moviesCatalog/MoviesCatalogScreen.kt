@@ -250,7 +250,7 @@ fun MovieItem(
                          AdultMark(
                              isVisible = true,
                              modifier = Modifier.constrainAs(adultMark) {
-                                 start.linkTo(parent.start,16.dp)
+                                 start.linkTo(parent.start,8.dp)
                                  top.linkTo(releaseDate.top)
                                  bottom.linkTo(releaseDate.bottom)
                                  end.linkTo(lguidline)
@@ -273,7 +273,7 @@ fun MovieItem(
                          MovieLangMark(
                             lang = movieItem.language,
                              modifier = Modifier.constrainAs(languageSticker) {
-                                 end.linkTo(parent.end,16.dp)
+                                 end.linkTo(parent.end,8.dp)
                                  top.linkTo(releaseDate.top)
                                  bottom.linkTo(releaseDate.bottom)
                                  start.linkTo(rguidline)
