@@ -30,6 +30,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails
+import com.mediaapps.movierepo.domain.exceptions.MovieInvalidAPIKeyException
+import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import com.mediaapps.movierepo.domain.states.MovieProductDetailsDataState
 import com.mediaapps.movierepo.ui.components.AdultMark
 import com.mediaapps.movierepo.ui.components.ErrorScreenBox
@@ -61,7 +63,17 @@ fun MovieProductPageScreen(
             }
         }
         is MovieProductDetailsDataState.Error -> {
-            ErrorScreenBox()
+            ErrorScreenBox(
+                when (currentState.movieDomainException) {
+                    is MovieResourceNotFoundException -> {
+                        R.string.error_message_not_found
+                    }
+                    is MovieInvalidAPIKeyException -> {
+                        R.string.error_message_unauthorized
+                    }
+                    else -> R.string.error_message_any_error
+                }
+            )
         }
         is MovieProductDetailsDataState.Success ->{
             ProductDetailsContent(

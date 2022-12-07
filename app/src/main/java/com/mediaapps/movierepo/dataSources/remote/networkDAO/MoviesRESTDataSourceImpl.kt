@@ -5,6 +5,9 @@ import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieCatalogDTO
 import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieProductDetailsDTO
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails
+import com.mediaapps.movierepo.domain.exceptions.MovieDomainException
+import com.mediaapps.movierepo.domain.exceptions.MovieInvalidAPIKeyException
+import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*

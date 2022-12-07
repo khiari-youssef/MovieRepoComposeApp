@@ -35,6 +35,8 @@ import coil.compose.AsyncImage
 import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieItem
+import com.mediaapps.movierepo.domain.exceptions.MovieInvalidAPIKeyException
+import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.ui.components.*
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
@@ -67,7 +69,17 @@ fun  MoviesCatalogScreen(
                    LoadingMovieItems()
                }
                is MovieCatalogDataState.Error ->{
-                   ErrorScreenBox()
+                   ErrorScreenBox(
+                       messageRes = when (currentState.movieDomainException) {
+                           is MovieResourceNotFoundException -> {
+                               R.string.error_message_not_found
+                           }
+                           is MovieInvalidAPIKeyException -> {
+                               R.string.error_message_unauthorized
+                           }
+                           else -> R.string.error_message_any_error
+                       }
+                   )
                }
                is MovieCatalogDataState.Success->{
                    when (currentState){

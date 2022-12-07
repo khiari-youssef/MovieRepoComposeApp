@@ -33,7 +33,6 @@ companion object {
 @Singleton
 @Provides
 fun provideAppHttpClient() : HttpClient = HttpClient(CIO){
-  expectSuccess = true
   install(Logging)
   developmentMode = BuildConfig.DEBUG
   install(ContentNegotiation) {
