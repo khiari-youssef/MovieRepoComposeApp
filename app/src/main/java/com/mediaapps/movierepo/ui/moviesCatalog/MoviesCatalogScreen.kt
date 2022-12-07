@@ -1,5 +1,6 @@
 package com.mediaapps.movierepo.ui.moviesCatalog
 
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -36,6 +38,7 @@ import com.mediaapps.movierepo.domain.entities.MovieItem
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.ui.components.*
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
+import com.valentinilk.shimmer.*
 
 @Composable
 fun  MoviesCatalogScreen(
@@ -61,9 +64,7 @@ fun  MoviesCatalogScreen(
        ){
            when(currentState){
                is MovieCatalogDataState.Loading ->{
-                   CircularProgressIndicator(
-                       color = MaterialTheme.colors.primary
-                   )
+                   LoadingMovieItems()
                }
                is MovieCatalogDataState.Error ->{
                    ErrorScreenBox()
@@ -78,6 +79,9 @@ fun  MoviesCatalogScreen(
                        is MovieCatalogDataState.Success.HasResult->{
                            MoviesListColumn(
                                movieCatalog = currentState.movieCatalog ,
+                               baseUrl = remember {
+                                   uiStateHolder.baseUrlState.value
+                               },
                                onMovieClicked = onMovieClicked
                            )
                        }
@@ -97,6 +101,7 @@ fun  MoviesCatalogScreen(
 @Composable
 fun MoviesListColumn(
     movieCatalog: MovieCatalog,
+    baseUrl : String?,
     onMovieClicked: (movie : MovieItem)->Unit
 ) {
     LazyColumn(
@@ -111,6 +116,7 @@ fun MoviesListColumn(
         items(movieCatalog.movies){ movie->
             MovieItem(
                 movie,
+                baseUrl = baseUrl,
                 onMovieClicked = onMovieClicked
             )
         }
@@ -118,9 +124,41 @@ fun MoviesListColumn(
 }
 
 
+
+
+@Composable
+fun LoadingMovieItems() {
+    val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .padding(
+                16.dp
+            )
+            .fillMaxSize()
+    ){
+        items(10){ index->
+            Box(
+                modifier = Modifier
+                    .background(
+                        shape = RoundedCornerShape(10.dp),
+                        color = Color(0xFFF2F2F2)
+                    )
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .shimmer(shimmerInstance)
+            )
+        }
+    }
+}
+
+
+
 @Composable
 fun MovieItem(
     movieItem: MovieItem,
+    baseUrl : String?,
     onMovieClicked: (movie : MovieItem)->Unit= {}
 ) {
     Card(
@@ -168,14 +206,13 @@ fun MovieItem(
                  }
 
                  AsyncImage(
-                     model = "https://image.tmdb.org/t/p/w500${movieItem.poster}"  ,
+                     model = "${baseUrl}w500${movieItem.poster}"  ,
                      contentDescription = null,
                      contentScale = ContentScale.Crop,
                      onError = {
                          showMovieGradientFilter.value = false
                      },
                      onLoading = {
-
                      },
                      onSuccess = {
                          showMovieGradientFilter.value = true

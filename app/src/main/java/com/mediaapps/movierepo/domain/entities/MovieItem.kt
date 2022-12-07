@@ -11,6 +11,7 @@ open class MovieItem(
     val language : String?=null,
     val isForAdult : Boolean = false
 ){
+
     override fun toString(): String {
         return "MovieItem(id=$id, title='$title', poster='$poster', releaseDate=$releaseDate),language=$language, isForAdult=$isForAdult"
     }

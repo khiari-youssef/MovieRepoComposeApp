@@ -1,19 +1,15 @@
 package com.mediaapps.movierepo.viewModels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mediaapps.movierepo.di.MovieRepositoryDevImpl
-import com.mediaapps.movierepo.domain.exceptions.MovieDomainException
-import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
-import com.mediaapps.movierepo.domain.repositories.MoviesRepository
-import com.mediaapps.movierepo.domain.repositories.MoviesRepositoryContract
+import com.mediaapps.movierepo.domain.repositories.movies.MoviesRepositoryContract
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.domain.utils.reduceException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -28,6 +24,8 @@ class MoviesCatalogViewModel @Inject constructor(
     )
 
      val moviesCatalogImmutableState : StateFlow<MovieCatalogDataState> = moviesCatalogMutableState
+
+    fun getImageBaseUrl() : Flow<String?> = moviesRepository.fetchImageServerBaseUrl()
 
     fun refreshMovieCatalog() {
         viewModelScope.launch {

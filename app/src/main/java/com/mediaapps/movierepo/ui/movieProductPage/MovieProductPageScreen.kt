@@ -51,8 +51,7 @@ fun MovieProductPageScreen(
         movieID
     )
 
-    val currentState = uiStateHolder.movieProductPage.value
-    when (currentState){
+    when (val currentState = uiStateHolder.movieProductPage.value){
         is MovieProductDetailsDataState.Loading->{
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center){
@@ -65,7 +64,10 @@ fun MovieProductPageScreen(
             ErrorScreenBox()
         }
         is MovieProductDetailsDataState.Success ->{
-            ProductDetailsContent(currentState.movieProductDetails)
+            ProductDetailsContent(
+                currentState.movieProductDetails,
+                baseUrl = uiStateHolder.baseUrlState.value
+            )
         }
     }
 }
@@ -75,7 +77,8 @@ fun MovieProductPageScreen(
 fun ProductDetailsContent(
     movieProductDetails : MovieProductDetails = MovieProductDetails(
         0,"Jaws","", LocalDate.now(),"lurepsum".repeat(120),""
-    )
+    ),
+    baseUrl : String?=null
 ) {
     val screenScrollState = rememberScrollState()
     Column(
@@ -86,7 +89,7 @@ fun ProductDetailsContent(
             .fillMaxSize()
     ){
         MoviePoster(
-            posterPath = movieProductDetails.poster,
+            posterPath = "${baseUrl}w500${movieProductDetails.poster}" ,
             isForAdult = movieProductDetails.isForAdult
         )
         MovieProductDetailsCard(
@@ -114,7 +117,7 @@ fun MoviePoster(
         val (poster,adultMark) = createRefs()
         val placeholder = rememberVectorPainter(image = ImageVector.vectorResource(id = R.drawable.movie_item_placeholder))
         AsyncImage(
-            model = "https://image.tmdb.org/t/p/w500${posterPath}",
+            model = posterPath,
             contentDescription = "",
             placeholder = placeholder,
             error = placeholder,

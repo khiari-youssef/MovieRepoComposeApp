@@ -1,4 +1,4 @@
-package com.mediaapps.movierepo.domain.repositories
+package com.mediaapps.movierepo.domain.repositories.movies
 
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails
@@ -9,5 +9,7 @@ interface MoviesRepositoryContract {
 fun fetchMoviesCatalog() : Flow<MovieCatalog>
 
 fun fetchMovieProductDetail(movieID : Int) : Flow<MovieProductDetails>
+
+fun fetchImageServerBaseUrl() : Flow<String?>
 
 }

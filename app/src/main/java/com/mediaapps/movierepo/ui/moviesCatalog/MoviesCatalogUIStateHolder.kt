@@ -14,7 +14,8 @@ value class MoviesCatalogStateImmutablePayload(
 )
 
 data class MoviesCatalogUIStateHolder(
-    val moviesCatalog : State<MoviesCatalogStateImmutablePayload>
+    val moviesCatalog : State<MoviesCatalogStateImmutablePayload>,
+    val baseUrlState : State<String?>
 ){
     companion object{
 
@@ -28,7 +29,8 @@ data class MoviesCatalogUIStateHolder(
                 MoviesCatalogUIStateHolder(
                     moviesCatalog = derivedStateOf {
                         MoviesCatalogStateImmutablePayload(it)
-                    }
+                    },
+                    baseUrlState = viewModel.getImageBaseUrl().collectAsStateLifecycleAware(initial = null)
                 )
             }
 

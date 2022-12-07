@@ -27,6 +27,10 @@ fun DependencyHandlerScope.installKotlinEssentialsDependencies() {
             LifeCycleRuntime
         )
         dependencies.add(
+            "implementation",
+            ProcessLifecycle
+        )
+        dependencies.add(
             "testImplementation",
             Junit4
         )
@@ -85,6 +89,10 @@ fun DependencyHandlerScope.installComposeDependencies() {
             ViewModel
         )
         dependencies.add(
+            "implementation",
+            ShimmerLib
+        )
+        dependencies.add(
             "debugImplementation",
             Tooling
         )
@@ -101,15 +109,15 @@ fun DependencyHandlerScope.installComposeDependencies() {
             ComposeTestManifest
         )
         dependencies.add(
-            "debugImplementation",
+            "implementation",
             CoilCompose
         )
         dependencies.add(
-            "debugImplementation",
+            "implementation",
             LottieCompose
         )
         dependencies.add(
-            "debugImplementation",
+            "implementation",
             ConstraintLayout
         )
     }

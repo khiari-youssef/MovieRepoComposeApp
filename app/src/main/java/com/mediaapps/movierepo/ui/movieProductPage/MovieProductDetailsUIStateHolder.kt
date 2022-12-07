@@ -13,7 +13,8 @@ import com.mediaapps.movierepo.viewModels.ProductPageViewModel
 
 
 data class MovieProductDetailsUIStateHolder(
-    val movieProductPage : State<MovieProductDetailsDataState>
+    val movieProductPage : State<MovieProductDetailsDataState>,
+    val baseUrlState : State<String?>
 ){
     companion object{
 
@@ -24,7 +25,8 @@ data class MovieProductDetailsUIStateHolder(
             MovieProductDetailsUIStateHolder(
                 movieProductPage = viewModel
                     .movieProductDetailsImmutableState
-                    .collectAsStateLifecycleAware(initial = MovieProductDetailsDataState.Loading )
+                    .collectAsStateLifecycleAware(initial = MovieProductDetailsDataState.Loading ),
+                baseUrlState = viewModel.getImageBaseUrl().collectAsStateLifecycleAware(initial = null)
             )
 
 

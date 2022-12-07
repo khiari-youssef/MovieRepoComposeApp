@@ -1,7 +1,7 @@
 package com.mediaapps.movierepo.di
 
-import com.mediaapps.movierepo.domain.repositories.MoviesRepository
-import com.mediaapps.movierepo.domain.repositories.MoviesRepositoryContract
+import com.mediaapps.movierepo.domain.repositories.movies.MoviesRepository
+import com.mediaapps.movierepo.domain.repositories.movies.MoviesRepositoryContract
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

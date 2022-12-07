@@ -3,7 +3,7 @@ object Versions {
     object AndroidKotlin{
         const val Core : String = "1.9.0"
         const val Coroutines : String = "1.3.9"
-        const val LifeCycleRuntime : String = "2.5.1"
+        const val LifeCycle : String = "2.5.1"
         const val Junit4 : String = "4.13.2"
         const val TextExt : String = "1.1.4"
         const val EspressoTest : String = "3.5.0"
@@ -20,6 +20,7 @@ object Versions {
         const val ViewModel : String = "2.5.1"
         const val CoilCompose : String = "2.2.2"
         const val Lottie : String = "5.2.0"
+        const val ShimmerLib : String = "1.0.3"
         const val ConstraintLayout : String = "1.0.1"
         const val ComposeUITestJunit4 : String = "1.3.1"
         const val ComposeTestManifest : String = "1.3.1"

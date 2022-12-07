@@ -7,11 +7,12 @@ object Dependencies {
     object AndroidKotlin{
         const val Core : String = "androidx.core:core-ktx:${Versions.AndroidKotlin.Core}"
         const val Coroutines : String = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.AndroidKotlin.Coroutines}"
-        const val LifeCycleRuntime : String = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidKotlin.LifeCycleRuntime}"
+        const val LifeCycleRuntime : String = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.AndroidKotlin.LifeCycle}"
+        const val ProcessLifecycle : String = "androidx.lifecycle:lifecycle-process:${Versions.AndroidKotlin.LifeCycle}"
         const val Junit4 : String = "junit:junit:${Versions.AndroidKotlin.Junit4}"
         const val TextExt : String = "androidx.test.ext:junit:${Versions.AndroidKotlin.TextExt}"
         const val EspressoTest : String = "androidx.test.espresso:espresso-core:${Versions.AndroidKotlin.EspressoTest}"
-        const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidKotlin.LifeCycleRuntime}"
+        const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidKotlin.LifeCycle}"
         const val DataStore : String =  "androidx.datastore:datastore-preferences:${Versions.AndroidKotlin.DataStore}"
     }
 
@@ -22,6 +23,7 @@ object Dependencies {
         const val ToolingPreview : String = "androidx.compose.ui:ui-tooling-preview:${Versions.Compose.ToolingPreview}"
         const val Material : String = "androidx.compose.material:material:${Versions.Compose.Material}"
         const val ViewModel : String = "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.ViewModel}"
+        const val ShimmerLib : String  = "com.valentinilk.shimmer:compose-shimmer:${Versions.Compose.ShimmerLib}"
         const val HiltNavigation : String = "androidx.hilt:hilt-navigation-compose:1.0.0"
         const val CoilCompose : String = "io.coil-kt:coil-compose:${Versions.Compose.CoilCompose}"
         const val LottieCompose : String = "com.airbnb.android:lottie-compose:${Versions.Compose.Lottie}"

@@ -1,6 +1,6 @@
 package com.mediaapps.movierepo.di
 
-import com.mediaapps.movierepo.dataSources.cache.AppDeviceCacheDAO
+import com.mediaapps.movierepo.dataSources.cache.AppDeviceCacheInterface
 import com.mediaapps.movierepo.dataSources.cache.AppDeviceCacheImplementation
 import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRESTDataSourceImpl
 import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRemoteDAO
@@ -26,7 +26,7 @@ abstract fun bindMoviesRemoteDAOImpl(moviesRESTDataSourceImpl : MoviesRESTDataSo
 
 @Singleton
 @Binds
-abstract fun bindDeviceCacheDAOImpl(appDeviceCacheImplementation : AppDeviceCacheImplementation) : AppDeviceCacheDAO
+abstract fun bindDeviceCacheDAOImpl(appDeviceCacheImplementation : AppDeviceCacheImplementation) : AppDeviceCacheInterface
 
 
 }

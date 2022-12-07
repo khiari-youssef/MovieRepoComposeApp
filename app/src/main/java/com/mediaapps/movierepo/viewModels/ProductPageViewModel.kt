@@ -3,12 +3,11 @@ package com.mediaapps.movierepo.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mediaapps.movierepo.di.MovieRepositoryDevImpl
-import com.mediaapps.movierepo.domain.repositories.MoviesRepository
-import com.mediaapps.movierepo.domain.repositories.MoviesRepositoryContract
-import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
+import com.mediaapps.movierepo.domain.repositories.movies.MoviesRepositoryContract
 import com.mediaapps.movierepo.domain.states.MovieProductDetailsDataState
 import com.mediaapps.movierepo.domain.utils.reduceException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -26,6 +25,7 @@ class ProductPageViewModel @Inject constructor(
 
     val movieProductDetailsImmutableState : StateFlow<MovieProductDetailsDataState> = movieProductDetailsMutableState
 
+    fun getImageBaseUrl() : Flow<String?> = moviesRepository.fetchImageServerBaseUrl()
 
     fun fetchMovieProductDetail(movieID : Int){
         viewModelScope.launch {
