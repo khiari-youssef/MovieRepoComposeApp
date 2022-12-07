@@ -3,6 +3,7 @@ package com.mediaapps.movierepo.base
 import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.navigation.NavType
 import androidx.navigation.Navigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -37,7 +38,12 @@ fun  RootNavigationGraph() {
             )
         }
         composable(
-            route  = "${MovieProductPageScreenRoute}/{movieID}"
+            route  = "${MovieProductPageScreenRoute}/{movieID}",
+            arguments = listOf(
+                navArgument("movieID"){
+                    type = NavType.IntType
+                }
+            )
         ){ args->
            val movieID : Int = args.arguments?.
            getInt("movieID",-1) ?: -1

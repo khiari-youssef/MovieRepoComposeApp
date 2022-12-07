@@ -42,6 +42,9 @@ class MoviesRESTDataSourceImpl @Inject constructor(
                 movieProductDetails
             )
         }
+        awaitClose {
+            cancel()
+        }
     }
 
     override fun fetchMoviesCatalogAPI(): Flow<MovieCatalog> = callbackFlow {
