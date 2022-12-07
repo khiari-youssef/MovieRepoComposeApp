@@ -1,17 +1,12 @@
 package com.mediaapps.movierepo.ui.moviesCatalog
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
@@ -20,42 +15,30 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.toUpperCase
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.rememberLottieComposition
 import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieItem
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
-import com.mediaapps.movierepo.ui.collectAsStateLifecycleAware
 import com.mediaapps.movierepo.ui.components.AdultMark
 import com.mediaapps.movierepo.ui.components.EmptyListState
+import com.mediaapps.movierepo.ui.components.ErrorScreenBox
 import com.mediaapps.movierepo.ui.components.MovieLangMark
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
-import kotlinx.coroutines.flow.map
-import java.time.LocalDate
-import java.util.*
 
 @Composable
 fun  MoviesCatalogScreen(
@@ -86,7 +69,7 @@ fun  MoviesCatalogScreen(
                    )
                }
                is MovieCatalogDataState.Error ->{
-                   ErrorState()
+                   ErrorScreenBox()
                }
                is MovieCatalogDataState.Success->{
                    when (currentState){
@@ -112,15 +95,7 @@ fun  MoviesCatalogScreen(
 
 
 
-@Composable
-fun ErrorState() {
-    Box(modifier = Modifier
-        .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ){
-        Text(text = "Error")
-    }
-}
+
 
 @Composable
 fun MoviesListColumn(

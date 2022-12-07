@@ -18,5 +18,5 @@ sealed interface MovieProductDetailsDataState {
 
     object Loading : MovieProductDetailsDataState
     data class Error(val movieDomainException: MovieDomainException) : MovieProductDetailsDataState
-    data class Success(val movieCatalog: MovieProductDetails) : MovieProductDetailsDataState
+    data class Success(val movieProductDetails: MovieProductDetails) : MovieProductDetailsDataState
 }

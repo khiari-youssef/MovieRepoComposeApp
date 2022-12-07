@@ -7,6 +7,7 @@ import androidx.navigation.Navigator
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import androidx.navigation.navOptions
 import com.mediaapps.movierepo.R
 import com.mediaapps.movierepo.base.screenRouting.MovieProductPageScreenRoute
@@ -29,16 +30,20 @@ fun  RootNavigationGraph() {
                 onMovieClicked = remember {
                     {
                         rootNavController.navigate(
-                            MovieProductPageScreenRoute
+                           route =  "$MovieProductPageScreenRoute/${it.id}"
                         )
                     }
                 }
             )
         }
         composable(
-            route  =MovieProductPageScreenRoute
-        ){
-            MovieProductPageScreen()
+            route  = "${MovieProductPageScreenRoute}/{movieID}"
+        ){ args->
+           val movieID : Int = args.arguments?.
+           getInt("movieID",-1) ?: -1
+            MovieProductPageScreen(
+                movieID = movieID
+            )
         }
     }
 }
