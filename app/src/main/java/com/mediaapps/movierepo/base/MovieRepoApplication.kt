@@ -8,7 +8,6 @@ import javax.inject.Inject
 @HiltAndroidApp
 class MovieRepoApplication : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
     }

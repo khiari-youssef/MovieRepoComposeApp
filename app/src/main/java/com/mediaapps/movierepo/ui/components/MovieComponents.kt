@@ -29,7 +29,10 @@ fun AdultMark(
     modifier: Modifier = Modifier,
     isVisible : Boolean = true
 ) {
-    AnimatedVisibility(visible = isVisible) {
+    AnimatedVisibility(
+        visible = isVisible,
+        modifier = modifier
+    ) {
         Box(
             modifier = modifier
                 .border(
@@ -37,8 +40,8 @@ fun AdultMark(
                     shape = CircleShape
                 )
                 .background(
-                    Color.White,
-                    shape = CircleShape
+                    shape = CircleShape,
+                    color = Color.White
                 )
                 .wrapContentSize()
                 .padding(6.dp),
@@ -62,7 +65,10 @@ fun MovieLangMark(
     modifier: Modifier = Modifier,
     lang : String? = "en"
 ) {
-    AnimatedVisibility(visible = lang != null) {
+    AnimatedVisibility(
+        visible = lang != null,
+        modifier = modifier
+    ) {
         Box(
             modifier = modifier
                 .border(

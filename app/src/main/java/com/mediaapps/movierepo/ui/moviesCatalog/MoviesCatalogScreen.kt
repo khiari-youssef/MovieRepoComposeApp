@@ -145,15 +145,10 @@ fun MoviesListColumn(
     }
 }
 
-@Preview(widthDp = 336, heightDp = 255)
+
 @Composable
 fun MovieItem(
-    movieItem: MovieItem = MovieItem(
-        0,
-        "Jaws",
-        "",
-        LocalDate.now()
-    ),
+    movieItem: MovieItem,
     onMovieClicked: (movie : MovieItem)->Unit= {}
 ) {
     Card(
@@ -180,20 +175,14 @@ fun MovieItem(
                  verticalArrangement = Arrangement.spacedBy(8.dp),
                  horizontalAlignment = Alignment.Start
              ) {
-                /* Text(
-                     text = "Horror",
-                     color = MaterialTheme.colors.primaryVariant,
-                     fontSize = 14.sp,
-                     fontFamily = FontFamily(Font(com.mediaapps.movierepo.R.font.satoshi_bold))
-                 )*/
                  Text(
                      text = movieItem.title,
                      color = MaterialTheme.colors.primary,
                      fontSize = 14.sp,
-                     fontFamily = FontFamily(Font(com.mediaapps.movierepo.R.font.satoshi_bold))
+                     fontFamily = FontFamily(Font(R.font.satoshi_bold))
                  )
              }
-             val placeholder  = painterResource(id = com.mediaapps.movierepo.R.drawable.movie_item_placeholder)
+             val placeholder  = painterResource(id = R.drawable.movie_item_placeholder)
 
 
              Box(
@@ -258,15 +247,15 @@ fun MovieItem(
                          val (adultMark,releaseDate,languageSticker) = createRefs()
                          val lguidline = createGuidelineFromStart(0.2f)
                          val rguidline = createGuidelineFromEnd(0.2f)
-//                         AdultMark(
-//                             isVisible = true,
-//                             modifier = Modifier.constrainAs(adultMark) {
-//                                 start.linkTo(parent.start,16.dp)
-//                                 top.linkTo(parent.top,8.dp)
-//                                 bottom.linkTo(parent.bottom,8.dp)
-//                                 end.linkTo(lguidline)
-//                             }
-//                         )
+                         AdultMark(
+                             isVisible = true,
+                             modifier = Modifier.constrainAs(adultMark) {
+                                 start.linkTo(parent.start,16.dp)
+                                 top.linkTo(releaseDate.top)
+                                 bottom.linkTo(releaseDate.bottom)
+                                 end.linkTo(lguidline)
+                             }
+                         )
                          Text(
                              text = stringResource(id = R.string.movies_catalog_release_date_label,movieItem.releaseDate.year) ,
                              fontSize = 16.sp,
@@ -281,15 +270,15 @@ fun MovieItem(
                              fontFamily = FontFamily(Font(R.font.satoshi_bold)),
                              textAlign = TextAlign.Center
                          )
-//                         MovieLangMark(
-//                             lang = movieItem.language,
-//                             modifier = Modifier.constrainAs(languageSticker) {
-//                                 end.linkTo(parent.end,16.dp)
-//                                 top.linkTo(parent.top,8.dp)
-//                                 bottom.linkTo(parent.bottom,8.dp)
-//                                 start.linkTo(rguidline)
-//                             }
-//                         )
+                         MovieLangMark(
+                            lang = movieItem.language,
+                             modifier = Modifier.constrainAs(languageSticker) {
+                                 end.linkTo(parent.end,16.dp)
+                                 top.linkTo(releaseDate.top)
+                                 bottom.linkTo(releaseDate.bottom)
+                                 start.linkTo(rguidline)
+                             }
+                         )
                      }
                  }
 
