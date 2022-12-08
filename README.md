@@ -1,6 +1,10 @@
 # MovieRepoComposeApp
 A sample project for Android that shows a list of movies fetched from remote API.
 
+
+![Movie Product Details Screen](/assets/movie_product_details_screen.jpg)
+![Movies Catalog Screen](/assets/movies_catalog_screen.jpg)
+
 ## Development patterns, kits, languages & APIs:
 - Kotlin, Kotlin coroutines, Kotlin Flows for asynchronous programming.
 - Jetpack compose : (UI,State management,Coil,Lottie,Navigation...)
