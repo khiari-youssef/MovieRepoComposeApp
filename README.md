@@ -2,8 +2,8 @@
 A sample project for Android that shows a list of movies fetched from remote API.
 
 
-![Movie Product Details Screen](/assets/movie_product_details_screen.jpg)
-![Movies Catalog Screen](/assets/movies_catalog_screen.jpg)
+<img alt="Movie Product Details Screen" src="/assets/movie_product_details_screen.webp" width="380" height="800"/>
+<img alt="Movies Catalog Screen" src="/assets/movies_catalog_screen.webp" width="380" height="800"/>
 
 ## Development patterns, kits, languages & APIs:
 - Kotlin, Kotlin coroutines, Kotlin Flows for asynchronous programming.
