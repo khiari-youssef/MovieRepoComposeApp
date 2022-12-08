@@ -1,11 +1,12 @@
 package com.mediaapps.movierepo.ui.moviesCatalog
 
-import androidx.compose.runtime.*
-import com.mediaapps.movierepo.domain.entities.MovieCatalog
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.ui.collectAsStateLifecycleAware
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
-import kotlinx.coroutines.flow.map
 
 @Stable
 @JvmInline

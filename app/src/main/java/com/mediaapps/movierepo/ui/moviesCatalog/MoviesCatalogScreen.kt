@@ -1,6 +1,5 @@
 package com.mediaapps.movierepo.ui.moviesCatalog
 
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
@@ -10,26 +9,21 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.mediaapps.movierepo.R
@@ -38,9 +32,13 @@ import com.mediaapps.movierepo.domain.entities.MovieItem
 import com.mediaapps.movierepo.domain.exceptions.MovieInvalidAPIKeyException
 import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
-import com.mediaapps.movierepo.ui.components.*
+import com.mediaapps.movierepo.ui.components.EmptyListState
+import com.mediaapps.movierepo.ui.components.ErrorScreenBox
+import com.mediaapps.movierepo.ui.components.MovieGradientFilterRow
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
-import com.valentinilk.shimmer.*
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
+import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun  MoviesCatalogScreen(

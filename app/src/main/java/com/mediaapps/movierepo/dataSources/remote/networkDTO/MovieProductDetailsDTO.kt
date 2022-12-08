@@ -1,7 +1,6 @@
 package com.mediaapps.movierepo.dataSources.remote.networkDTO
 
 import kotlinx.serialization.SerialName
-import java.time.LocalDate
 
 
 @kotlinx.serialization.Serializable

@@ -2,13 +2,8 @@ package com.mediaapps.movierepo.ui.movieProductPage
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.remember
-import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.domain.states.MovieProductDetailsDataState
 import com.mediaapps.movierepo.ui.collectAsStateLifecycleAware
-import com.mediaapps.movierepo.ui.moviesCatalog.MoviesCatalogStateImmutablePayload
-import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
 import com.mediaapps.movierepo.viewModels.ProductPageViewModel
 
 

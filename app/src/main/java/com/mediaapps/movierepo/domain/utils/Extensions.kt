@@ -1,7 +1,6 @@
 package com.mediaapps.movierepo.domain.utils
 
 import com.mediaapps.movierepo.domain.exceptions.MovieDomainException
-import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 
