@@ -21,7 +21,7 @@ A sample project for Android that shows a list of movies fetched from remote API
 
 
 #  Notice : 
-### The API Key should be provided once you clone the repository in a file named: 'env.properties' for safety reasons, by default it will provide and empty string to make sure the build doesn't fail and shows error screen when the app is launched.
+### The API Key should be provided once you clone the repository in a file named: 'env.properties' for safety reasons, by default it will provide an empty string to make sure the build doesn't fail and shows error screen when the app is launched.
 
 
 
