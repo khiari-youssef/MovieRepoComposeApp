@@ -53,33 +53,44 @@ fun MovieProductPageScreen(
         movieID
     )
 
-    when (val currentState = uiStateHolder.movieProductPage.value){
-        is MovieProductDetailsDataState.Loading->{
-            Box(modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center){
-                CircularProgressIndicator(
-                    color = MaterialTheme.colors.primary
+    Column(
+        modifier = Modifier
+            .background(
+            MaterialTheme.colors.background
+        )
+    ) {
+        when (val currentState = uiStateHolder.movieProductPage.value){
+            is MovieProductDetailsDataState.Loading->{
+                Box(modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center){
+                    CircularProgressIndicator(
+                        color = MaterialTheme.colors.primary
+                    )
+                }
+            }
+            is MovieProductDetailsDataState.Error -> {
+                ErrorScreenBox(
+                    when (currentState.movieDomainException) {
+                        is MovieResourceNotFoundException -> {
+                            R.string.error_message_not_found
+                        }
+                        is MovieInvalidAPIKeyException -> {
+                            R.string.error_message_unauthorized
+                        }
+                        else -> R.string.error_message_any_error
+                    }
                 )
             }
-        }
-        is MovieProductDetailsDataState.Error -> {
-            ErrorScreenBox(
-                when (currentState.movieDomainException) {
-                    is MovieResourceNotFoundException -> {
-                        R.string.error_message_not_found
-                    }
-                    is MovieInvalidAPIKeyException -> {
-                        R.string.error_message_unauthorized
-                    }
-                    else -> R.string.error_message_any_error
+            is MovieProductDetailsDataState.Success ->{
+                Box(modifier = Modifier.fillMaxSize().background(
+                   color = MaterialTheme.colors.background
+                )) {
+                    ProductDetailsContent(
+                        currentState.movieProductDetails,
+                        baseUrl = uiStateHolder.baseUrlState.value
+                    )
                 }
-            )
-        }
-        is MovieProductDetailsDataState.Success ->{
-            ProductDetailsContent(
-                currentState.movieProductDetails,
-                baseUrl = uiStateHolder.baseUrlState.value
-            )
+            }
         }
     }
 }
@@ -95,10 +106,9 @@ fun ProductDetailsContent(
     val screenScrollState = rememberScrollState()
     Column(
         modifier = Modifier
+            .fillMaxSize()
             .verticalScroll(state = screenScrollState)
             .systemBarsPadding()
-            .background(Color.White)
-            .fillMaxSize()
     ){
         MoviePoster(
             posterPath = "${baseUrl}w500${movieProductDetails.poster}" ,
@@ -107,22 +117,25 @@ fun ProductDetailsContent(
         MovieProductDetailsCard(
             modifier = Modifier
                 .fillMaxSize()
+                .heightIn(min = 600.dp)
                 .offset(
                     y = (-20).dp
                 ),
             movieProductDetails = movieProductDetails
         )
+
     }
 }
 
 
 @Composable
 fun MoviePoster(
+    modifier: Modifier = Modifier,
     posterPath : String,
     isForAdult : Boolean = false
 ) {
     ConstraintLayout(
-        modifier = Modifier
+        modifier = modifier
             .height(250.dp)
             .fillMaxWidth()
     ){
@@ -168,7 +181,7 @@ fun MovieProductDetailsCard(
             topEnd = 15.dp,
             topStart = 15.dp
         ),
-        backgroundColor = Color.White,
+        backgroundColor = MaterialTheme.colors.surface,
         modifier = modifier
             .fillMaxSize(),
         elevation = 0.dp
@@ -224,7 +237,7 @@ fun MovieProductDetailsCard(
           ) {
               Text(
                   text = movieProductDetails.overView,
-                  color = Color.Black,
+                  color = MaterialTheme.colors.onBackground,
                   fontSize = 14.sp,
                   fontFamily = FontFamily(Font(R.font.satoshi_regular)),
                   lineHeight = 21.sp,

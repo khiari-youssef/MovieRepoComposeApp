@@ -51,6 +51,7 @@ fun  MoviesCatalogScreen(
 
    Column(
        modifier = Modifier
+           .background(MaterialTheme.colors.background)
            .fillMaxSize()
            .systemBarsPadding(),
        verticalArrangement = Arrangement.Top,
@@ -173,7 +174,7 @@ fun MovieItem(
 ) {
     Card(
         shape = RoundedCornerShape(10.dp),
-        backgroundColor = Color(0xFFF2F2F2),
+        backgroundColor = MaterialTheme.colors.surface,
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()

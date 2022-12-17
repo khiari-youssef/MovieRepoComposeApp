@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.mediaapps.movierepo.R
+import com.mediaapps.movierepo.ui.theme.DarkCerulean
 
 
 @Preview
@@ -76,7 +78,7 @@ fun MovieLangMark(
         Box(
             modifier = modifier
                 .border(
-                    border = BorderStroke(1.dp, MaterialTheme.colors.primary),
+                    border = BorderStroke(1.dp, DarkCerulean),
                     shape = RoundedCornerShape(8.dp)
                 )
                 .background(
@@ -93,7 +95,7 @@ fun MovieLangMark(
             Text(
                 text = "${lang?.uppercase()}",
                 fontSize = 12.sp,
-                color = MaterialTheme.colors.primary,
+                color = DarkCerulean,
                 modifier = Modifier.wrapContentSize(),
                 fontFamily = FontFamily(Font(R.font.satoshi_bold))
             )
@@ -115,14 +117,24 @@ fun MovieGradientFilterRow(
                 .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp))
                 .background(
                     brush = Brush.verticalGradient(
-                        listOf(
-                            Color.Transparent,
-                            Color(0x66000000),
-                            Color(0x99000000),
-                            Color(0x99000000),
-                            Color(0x99000000),
-                            Color(0x99000000)
-                        )
+                        if (isSystemInDarkTheme()) {
+                            listOf(
+                                Color.Transparent,
+                                Color(0x66FFFFFF),
+                                Color(0x99ECECEC),
+                                Color(0x99E9E9E9),
+                                Color(0x99E7E7E7),
+                                Color(0x99D5D5D5)
+                            )
+                        } else
+                            listOf(
+                                Color.Transparent,
+                                Color(0x66000000),
+                                Color(0x99000000),
+                                Color(0x99000000),
+                                Color(0x99000000),
+                                Color(0x99000000)
+                            )
                     )
                 )
         ) {
@@ -141,7 +153,7 @@ fun MovieGradientFilterRow(
             Text(
                 text = stringResource(id = R.string.movies_catalog_release_date_label,releaseYear) ,
                 fontSize = 16.sp,
-                color = Color.White,
+                color = Color.Black,
                 modifier = Modifier
                     .constrainAs(releaseDate){
                         start.linkTo(lguidline,16.dp)

@@ -9,9 +9,9 @@
     <color name="light_cornflower_blue">#FF98CEE9</color>
     <color name="patterns_blue">#FFe5f3fa</color>
     <color name="black">#FF000000</color>
+    <color name="background">@color/black</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">@color/white</color>
-    <color name="primaryColor">@color/dark_cerulean</color>
-    <color name="primaryColorVarient">@color/nice_blue</color>
-    <color name="status_bar_color">@color/primaryColor</color>
+    <color name="primaryColor">@color/light_cornflower_blue</color>
+    <color name="primaryColorVarient">@color/patterns_blue</color>
+    <color name="status_bar_color">@color/black_pearl</color>
 </resources>
