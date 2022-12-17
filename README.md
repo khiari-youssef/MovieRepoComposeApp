@@ -2,8 +2,13 @@
 A sample project for Android that shows a list of movies fetched from remote API.
 
 <table>
+<tr>
+  <img alt="TMDB Logo" src="/assets/the_movie_db.svg" width="400" height="400" />
+</tr>
+  <tr>
   <td> <img alt="Movie Product Details Screen" src="/assets/movie_product_details_screen.webp" width="380" height="800" />  </td>
   <td> <img alt="Movies Catalog Screen" src="/assets/movies_catalog_screen.webp" width="380" height="800" />  </td>
+</tr>
 </table>
 
 ## Development patterns, kits, languages & APIs:
