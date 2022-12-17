@@ -22,7 +22,6 @@ A sample project for Android that shows a list of movies fetched from remote API
 ## Things to consider  :
 
 - Design-system theming & components design for scalability
-- Dark mode
 - TDD
 
 ## Features to improve:
