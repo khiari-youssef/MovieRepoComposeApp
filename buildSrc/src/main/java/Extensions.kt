@@ -58,8 +58,22 @@ fun DependencyHandlerScope.installHiltDependencies() {
             Kapt
         )
     }
-
 }
+fun DependencyHandlerScope.installMediaDependencies() {
+    Dependencies.Media.run {
+        dependencies.add(
+            "implementation",
+            ExoPlayer
+        )
+
+        dependencies.add(
+            "implementation",
+            MediaPlayer
+        )
+    }
+}
+
+
 
 
 fun DependencyHandlerScope.installComposeDependencies() {

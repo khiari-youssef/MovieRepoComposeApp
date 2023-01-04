@@ -82,7 +82,9 @@ class MoviesRESTDataSourceImpl @Inject constructor(
             }
                 .body<MovieVideoDetailsDTOWrapper>().let {
                     it.results.firstOrNull {
-                        it.site.lowercase().contains("youtube")
+                        ( it.site?.lowercase()?.contains("youtube") == true).and(
+                            it.key.isNullOrBlank().not()
+                        )
                     }?.run {
                         movieVideoDetailsRemoteDTOMapper.fromStartToDestination(
                            this

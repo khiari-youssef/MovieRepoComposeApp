@@ -35,6 +35,7 @@ import com.mediaapps.movierepo.domain.exceptions.MovieResourceNotFoundException
 import com.mediaapps.movierepo.domain.states.MovieProductDetailsDataState
 import com.mediaapps.movierepo.ui.components.AdultMark
 import com.mediaapps.movierepo.ui.components.ErrorScreenBox
+import com.mediaapps.movierepo.ui.components.VideoPlayer
 import com.mediaapps.movierepo.viewModels.ProductPageViewModel
 import java.time.LocalDate
 
@@ -82,9 +83,11 @@ fun MovieProductPageScreen(
                 )
             }
             is MovieProductDetailsDataState.Success ->{
-                Box(modifier = Modifier.fillMaxSize().background(
-                   color = MaterialTheme.colors.background
-                )) {
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        color = MaterialTheme.colors.background
+                    )) {
                     ProductDetailsContent(
                         currentState.movieProductDetails,
                         baseUrl = uiStateHolder.baseUrlState.value

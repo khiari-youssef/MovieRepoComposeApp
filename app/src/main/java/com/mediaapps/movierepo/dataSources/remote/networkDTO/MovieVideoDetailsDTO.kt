@@ -14,13 +14,13 @@ value class MovieVideoDetailsDTOWrapper(
 @Serializable
 data class MovieVideoDetailsDTO(
  @SerialName("id")   val id : String,
- @SerialName("name")   val name : String,
- @SerialName("key")   val key : String,
- @SerialName("iso_639_1")  val iso_639_1_lang : String,
- @SerialName("iso_3166_1") val so_3166_1_lang : String,
- @SerialName("site") val site : String,
- @SerialName("size")   val size : Long,
- @SerialName("type")   val type : String,
- @SerialName("published_at")   val publishDateTime : String,
- @SerialName("official")  val isOfficial : Boolean
+ @SerialName("name")   val name : String?=null,
+ @SerialName("key")   val key : String?=null,
+ @SerialName("iso_639_1")  val iso_639_1_lang : String?=null,
+ @SerialName("iso_3166_1") val so_3166_1_lang : String?=null,
+ @SerialName("site") val site : String?=null,
+ @SerialName("size")   val size : Long?=null,
+ @SerialName("type")   val type : String?=null,
+ @SerialName("published_at")   val publishDateTime : String?,
+ @SerialName("official")  val isOfficial : Boolean?=null
 )

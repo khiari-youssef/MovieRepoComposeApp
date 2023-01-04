@@ -75,6 +75,7 @@ dependencies {
     installComposeDependencies()
     installKotlinEssentialsDependencies()
     installHiltDependencies()
+    installMediaDependencies()
     installKtorDependencies()
 }
 

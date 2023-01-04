@@ -31,6 +31,12 @@ object Dependencies {
         const val NavComponent : String = "androidx.navigation:navigation-compose:${Versions.Compose.NavComponent}"
         const val ComposeUITestJunit4 : String = "androidx.compose.ui:ui-test-junit4:${Versions.Compose.ComposeUITestJunit4}"
         const val ComposeTestManifest : String ="androidx.compose.ui:ui-test-manifest:${Versions.Compose.ComposeTestManifest}"
+
+    }
+
+    object Media {
+        const val ExoPlayer = "androidx.media3:media3-exoplayer:1.0.0-beta03"
+        const val MediaPlayer = "androidx.media3:media3-ui:1.0.0-beta03"
     }
 
     object Hilt{
