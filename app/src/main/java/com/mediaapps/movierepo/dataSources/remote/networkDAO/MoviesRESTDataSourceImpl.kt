@@ -3,8 +3,11 @@ package com.mediaapps.movierepo.dataSources.remote.networkDAO
 import com.mediaapps.movierepo.dataSources.InterDomainMappingInterface
 import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieCatalogDTO
 import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieProductDetailsDTO
+import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieVideoDetailsDTO
+import com.mediaapps.movierepo.dataSources.remote.networkDTO.MovieVideoDetailsDTOWrapper
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails
+import com.mediaapps.movierepo.domain.entities.MovieVideoDetails
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
@@ -19,7 +22,8 @@ import javax.inject.Inject
 class MoviesRESTDataSourceImpl @Inject constructor(
     private val httpClient: HttpClient,
     private val movieCatalogRemoteDTOMapper: InterDomainMappingInterface<MovieCatalogDTO, MovieCatalog>,
-    private val moviesProductDetailsRemoteDTOMapper: InterDomainMappingInterface<MovieProductDetailsDTO, MovieProductDetails>
+    private val moviesProductDetailsRemoteDTOMapper: InterDomainMappingInterface<MovieProductDetailsDTO, MovieProductDetails>,
+    private val movieVideoDetailsRemoteDTOMapper : InterDomainMappingInterface<MovieVideoDetailsDTO,MovieVideoDetails>
 ) : MoviesRemoteDAO {
 
 
@@ -55,6 +59,38 @@ class MoviesRESTDataSourceImpl @Inject constructor(
             }
         }.onFailure {  ex->
           channel.close(ex)
+        }.onSuccess { movieCatalog->
+            trySend(
+                movieCatalog
+            )
+        }
+        awaitClose {
+            cancel()
+        }
+    }
+
+    override fun fetchMovieVideoByID(movieID: Int): Flow<MovieVideoDetails?> = callbackFlow {
+        kotlin.runCatching {
+            return@runCatching httpClient.get {
+                url {
+                    appendPathSegments(
+                        "movie",
+                        "$movieID",
+                         "videos"
+                    )
+                }
+            }
+                .body<MovieVideoDetailsDTOWrapper>().let {
+                    it.results.firstOrNull {
+                        it.site.lowercase().contains("youtube")
+                    }?.run {
+                        movieVideoDetailsRemoteDTOMapper.fromStartToDestination(
+                           this
+                        )
+                    }
+                }
+        }.onFailure {  ex->
+            channel.close(ex)
         }.onSuccess { movieCatalog->
             trySend(
                 movieCatalog

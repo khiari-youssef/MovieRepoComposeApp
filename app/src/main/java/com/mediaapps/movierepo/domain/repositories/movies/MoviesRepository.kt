@@ -5,6 +5,7 @@ import com.mediaapps.movierepo.dataSources.remote.networkDAO.MoviesRemoteDAO
 import com.mediaapps.movierepo.di.MovieDAORESTImpl
 import com.mediaapps.movierepo.domain.entities.MovieCatalog
 import com.mediaapps.movierepo.domain.entities.MovieProductDetails
+import com.mediaapps.movierepo.domain.entities.MovieVideoDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -26,5 +27,8 @@ class MoviesRepository @Inject constructor(
 
     override fun fetchImageServerBaseUrl(): Flow<String?> =
         appDeviceCacheInterface.collectImageBaseUrl()
+
+    override fun fetchMovieVideosByID(movieID: Int): Flow<MovieVideoDetails?>
+     = moviesRemoteDAO.fetchMovieVideoByID(movieID)
 
 }
