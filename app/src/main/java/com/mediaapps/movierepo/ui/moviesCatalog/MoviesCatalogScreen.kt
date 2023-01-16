@@ -35,10 +35,8 @@ import com.mediaapps.movierepo.domain.states.MovieCatalogDataState
 import com.mediaapps.movierepo.ui.components.EmptyListState
 import com.mediaapps.movierepo.ui.components.ErrorScreenBox
 import com.mediaapps.movierepo.ui.components.MovieGradientFilterRow
+import com.mediaapps.movierepo.ui.shimmerEffect
 import com.mediaapps.movierepo.viewModels.MoviesCatalogViewModel
-import com.valentinilk.shimmer.ShimmerBounds
-import com.valentinilk.shimmer.rememberShimmer
-import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun  MoviesCatalogScreen(
@@ -139,7 +137,6 @@ fun MoviesListColumn(
 
 @Composable
 fun LoadingMovieItems() {
-    val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -149,16 +146,14 @@ fun LoadingMovieItems() {
             )
             .fillMaxSize()
     ){
-        items(10){ index->
+        items(10){
             Box(
                 modifier = Modifier
-                    .background(
-                        shape = RoundedCornerShape(10.dp),
-                        color = Color(0xFFF2F2F2)
-                    )
                     .fillMaxWidth()
                     .height(200.dp)
-                    .shimmer(shimmerInstance)
+                    .shimmerEffect(
+                        shape = RoundedCornerShape(10.dp)
+                    )
             )
         }
     }

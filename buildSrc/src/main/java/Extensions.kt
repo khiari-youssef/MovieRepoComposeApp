@@ -89,10 +89,6 @@ fun DependencyHandlerScope.installComposeDependencies() {
             ViewModel
         )
         dependencies.add(
-            "implementation",
-            ShimmerLib
-        )
-        dependencies.add(
             "debugImplementation",
             Tooling
         )

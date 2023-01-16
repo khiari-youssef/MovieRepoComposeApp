@@ -153,7 +153,7 @@ fun MovieGradientFilterRow(
             Text(
                 text = stringResource(id = R.string.movies_catalog_release_date_label,releaseYear) ,
                 fontSize = 16.sp,
-                color = Color.Black,
+                color = if (isSystemInDarkTheme()) Color.Black else Color.White,
                 modifier = Modifier
                     .constrainAs(releaseDate){
                         start.linkTo(lguidline,16.dp)
