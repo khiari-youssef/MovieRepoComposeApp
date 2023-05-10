@@ -19,11 +19,6 @@ A sample project for Android that shows a list of movies fetched from remote API
 - Gradle KTS, BuildSrc , Gradle extension to ease the project dependencies management and upgrades.
 - Interface driven development, loose coupling between layers and isolating domain from frameworks and thrid parties.
 
-## Things to consider  :
-
-- Design-system theming & components design for scalability
-- TDD
-
 ## Features to improve:
 - Populating the UI with more data
 - Make the image base url fetching more configurable.
